@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dojo {
+            display: flex;
+            height: 20px;
+            align-items: center;
+        }
+        .dojo p {
+            margin-right: 45px;
+        }
+        .dojo select {
+            width: 175px;
+            padding: 2px;
+        }
+        .button{
+            border: 1px solid black;
+            text-decoration: none;
+            color: black;
+            padding: 2px 8px;
+            margin: 0px 0px 80px 80px;
+            display: block;
+            width: 45px;
+        }
+        .age_group {
+            display: flex;
+            align-items: center;
+            margin: 0px;
+        }
+        .age {
+            margin: 0px 48px 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>New Ninja</h1>
+    <div class="dojo">
+        <p>Dojo:</p>
+        <form action="/add_ninja" method="POST">
+            <select name="dojo_id">
+                {% for one_dojo in all_dojos %}
+                    <option value="{{ one_dojo['id'] }}">{{one_dojo['name']}}</option>
+                {% endfor %}
+            </select>
+    </div>
+        <p>First Name: <input type="text" name = 'first_name'></p>
+        <p>Last Name: <input type="text" name = 'last_name'></p>
+        <div class="age_group">
+            <p class="age">Age:</p>
+            <p><input type="text" name = 'age'></p>
+        </div>
+        <input type="submit" value="Create">
+        </form>
+        <a class="home" href="/dojos">Home</a>
+</body>
+</html>
